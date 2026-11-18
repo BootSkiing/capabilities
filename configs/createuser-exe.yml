@@ -1,0 +1,11 @@
+outfile: ../output/createuser.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - createuser:
+      username: "allcapstest"
+      password: "AllC@ps!Test123"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

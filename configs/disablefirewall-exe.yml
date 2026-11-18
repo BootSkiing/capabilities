@@ -1,0 +1,10 @@
+outfile: ../output/disablefirewall.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - disablefirewall:
+      dummy: "x"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

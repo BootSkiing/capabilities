@@ -1,0 +1,11 @@
+outfile: ../output/dumpsam.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - dumpsam:
+      sam_output: "C:\\\\AllcapsTest\\\\sam.save"
+      system_output: "C:\\\\AllcapsTest\\\\system.save"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

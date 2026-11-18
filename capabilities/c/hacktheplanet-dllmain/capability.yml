@@ -1,0 +1,12 @@
+name: Hack The Planet (DllMain)
+description: Displays a message box on DLL load via constructor attribute (fires during DLL_PROCESS_ATTACH)
+preimports:
+- |
+  #include <windows.h>
+  __attribute__((constructor))
+  static void on_load(void) {
+      MessageBoxW(NULL, L"Hack the Planet!", L"ALLCAPS", MB_OK | MB_ICONINFORMATION);
+  }
+imports:
+- windows.h
+inputs: {}

@@ -1,0 +1,8 @@
+name: Create Local User
+description: Creates a new local user account via NetUserAdd (T1136.001). Requires admin.
+imports:
+- windows.h
+- lm.h
+inputs:
+  username: "Username for the new local account"
+  password: "Password for the new local account"

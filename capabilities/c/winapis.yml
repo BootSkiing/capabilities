@@ -1,0 +1,412 @@
+URLDownloadToFileW:
+  # https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms775123(v=vs.85)
+  library: Urlmon
+  preamble: DECLSPEC_IMPORT HRESULT WINAPI
+  args:
+  - LPUNKNOWN
+  - LPCWSTR
+  - LPCWSTR
+  - DWORD
+  - LPBINDSTATUSCALLBACK
+
+ldap_initW:
+  # https://learn.microsoft.com/en-us/previous-versions/windows/desktop/api/winldap/nf-winldap-ldap_initw
+  library: Wldap32
+  preamble: WINLDAPAPI LDAP* LDAPAPI
+  args:
+  - PWCHAR
+  - ULONG
+
+ldap_bind_sW:
+  # https://learn.microsoft.com/en-us/previous-versions/windows/desktop/api/winldap/nf-winldap-ldap_bind_sw
+  library: Wldap32
+  preamble: WINLDAPAPI ULONG LDAPAPI
+  args:
+  - LDAP*
+  - PWCHAR
+  - PWCHAR
+  - ULONG
+
+ldap_search_sW:
+  # https://learn.microsoft.com/en-us/previous-versions/windows/desktop/api/winldap/nf-winldap-ldap_search_sw
+  library: Wldap32
+  preamble: WINLDAPAPI ULONG LDAPAPI
+  args:
+  - LDAP*
+  - PWCHAR
+  - ULONG
+  - PWCHAR
+  - PWCHAR*
+  - ULONG
+  - LDAPMessage**
+
+ldap_unbind:
+  # https://learn.microsoft.com/en-us/previous-versions/windows/desktop/api/winldap/nf-winldap-ldap_unbind
+  library: Wldap32
+  preamble: WINLDAPAPI ULONG LDAPAPI
+  args:
+  - LDAP*
+
+AcquireCredentialsHandleW:
+  # https://learn.microsoft.com/en-us/windows/win32/secauthn/acquirecredentialshandle--general
+  library: Secur32
+  preamble: KSECDDDECLSPEC SECURITY_STATUS WINAPI
+  args:
+  - SEC_WCHAR*
+  - SEC_WCHAR*
+  - ULONG
+  - void*
+  - void*
+  - SEC_GET_KEY_FN
+  - void*
+  - PCredHandle
+  - PTimeStamp
+
+InitializeSecurityContextW:
+  # https://learn.microsoft.com/en-us/windows/win32/secauthn/initializesecuritycontext--general
+  library: Secur32
+  preamble: KSECDDDECLSPEC SECURITY_STATUS WINAPI
+  args:
+  - PCredHandle
+  - PCtxtHandle
+  - SEC_WCHAR*
+  - ULONG
+  - ULONG
+  - ULONG
+  - PSecBufferDesc
+  - ULONG
+  - PCtxtHandle
+  - PSecBufferDesc
+  - PULONG
+  - PTimeStamp
+
+FreeCredentialsHandle:
+  # https://learn.microsoft.com/en-us/windows/win32/secauthn/freecredentialshandle
+  library: Secur32
+  preamble: KSECDDDECLSPEC SECURITY_STATUS WINAPI
+  args:
+  - PCredHandle
+
+DeleteSecurityContext:
+  # https://learn.microsoft.com/en-us/windows/win32/secauthn/deletesecuritycontext
+  library: Secur32
+  preamble: KSECDDDECLSPEC SECURITY_STATUS WINAPI
+  args:
+  - PCtxtHandle
+
+FreeContextBuffer:
+  # https://learn.microsoft.com/en-us/windows/win32/secauthn/freecontextbuffer
+  library: Secur32
+  preamble: SECURITY_STATUS WINAPI
+  args:
+  - void*
+
+MessageBoxW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messageboxw
+  library: User32
+  preamble: DECLSPEC_IMPORT INT WINAPI
+  args:
+  - HWND
+  - LPCWSTR
+  - LPCWSTR
+  - UINT
+
+CoInitializeEx:
+  # https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-coinitializeex
+  library: Ole32
+  preamble: DECLSPEC_IMPORT HRESULT WINAPI
+  args:
+  - LPVOID
+  - DWORD
+
+CoCreateInstance:
+  # https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+  library: Ole32
+  preamble: DECLSPEC_IMPORT HRESULT WINAPI
+  args:
+  - REFCLSID
+  - LPUNKNOWN
+  - DWORD
+  - REFIID
+  - LPVOID*
+
+CoInitializeSecurity:
+  # https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-coinitializesecurity
+  library: Ole32
+  preamble: DECLSPEC_IMPORT HRESULT WINAPI
+  args:
+  - PSECURITY_DESCRIPTOR
+  - LONG
+  - SOLE_AUTHENTICATION_SERVICE*
+  - void*
+  - DWORD
+  - DWORD
+  - void*
+  - DWORD
+  - void*
+
+CoSetProxyBlanket:
+  # https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-cosetproxyblanket
+  library: Ole32
+  preamble: DECLSPEC_IMPORT HRESULT WINAPI
+  args:
+  - IUnknown*
+  - DWORD
+  - DWORD
+  - OLECHAR*
+  - DWORD
+  - DWORD
+  - RPC_AUTH_IDENTITY_HANDLE
+  - DWORD
+
+CoUninitialize:
+  # https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
+  library: Ole32
+  preamble: DECLSPEC_IMPORT void WINAPI
+  args: []
+
+SysAllocString:
+  # https://learn.microsoft.com/en-us/windows/win32/api/oleauto/nf-oleauto-sysallocstring
+  library: OleAut32
+  preamble: DECLSPEC_IMPORT BSTR WINAPI
+  args:
+  - LPCWSTR
+
+SysFreeString:
+  # https://learn.microsoft.com/en-us/windows/win32/api/oleauto/nf-oleauto-sysfreestring
+  library: OleAut32
+  preamble: DECLSPEC_IMPORT void WINAPI
+  args:
+  - BSTR
+
+GetUserNameW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getusernamew
+  library: Advapi32
+  preamble: DECLSPEC_IMPORT BOOL WINAPI
+  args:
+  - LPWSTR
+  - LPDWORD
+
+NetUserAdd:
+  # https://learn.microsoft.com/en-us/windows/win32/api/lmaccess/nf-lmaccess-netuseradd
+  library: Netapi32
+  preamble: NET_API_STATUS WINAPI
+  args:
+  - LPCWSTR
+  - DWORD
+  - LPBYTE
+  - LPDWORD
+
+NetLocalGroupAddMembers:
+  # https://learn.microsoft.com/en-us/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupaddmembers
+  library: Netapi32
+  preamble: NET_API_STATUS WINAPI
+  args:
+  - LPCWSTR
+  - LPCWSTR
+  - DWORD
+  - LPBYTE
+  - DWORD
+
+RegCreateKeyExW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regcreatekeyexw
+  library: Advapi32
+  preamble: WINADVAPI LONG WINAPI
+  args:
+  - HKEY
+  - LPCWSTR
+  - DWORD
+  - LPWSTR
+  - DWORD
+  - REGSAM
+  - LPSECURITY_ATTRIBUTES
+  - PHKEY
+  - LPDWORD
+
+RegOpenKeyExW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regopenkeyexw
+  library: Advapi32
+  preamble: WINADVAPI LONG WINAPI
+  args:
+  - HKEY
+  - LPCWSTR
+  - DWORD
+  - REGSAM
+  - PHKEY
+
+RegSetValueExW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regsetvalueexw
+  library: Advapi32
+  preamble: WINADVAPI LONG WINAPI
+  args:
+  - HKEY
+  - LPCWSTR
+  - DWORD
+  - DWORD
+  - CONST BYTE*
+  - DWORD
+
+RegCloseKey:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regclosekey
+  library: Advapi32
+  preamble: WINADVAPI LONG WINAPI
+  args:
+  - HKEY
+
+FwpmEngineOpen0:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fwpmu/nf-fwpmu-fwpmengineopen0
+  library: Fwpuclnt
+  preamble: DWORD WINAPI
+  args:
+  - PCWSTR
+  - UINT32
+  - SEC_WINNT_AUTH_IDENTITY_W*
+  - FWPM_SESSION0*
+  - HANDLE*
+
+FwpmEngineClose0:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fwpmu/nf-fwpmu-fwpmengineclose0
+  library: Fwpuclnt
+  preamble: DWORD WINAPI
+  args:
+  - HANDLE
+
+FwpmFilterAdd0:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilteradd0
+  library: Fwpuclnt
+  preamble: DWORD WINAPI
+  args:
+  - HANDLE
+  - const FWPM_FILTER0*
+  - PSECURITY_DESCRIPTOR
+  - UINT64*
+
+FwpmGetAppIdFromFileName0:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fwpmu/nf-fwpmu-fwpmgetappidfromfilename0
+  library: Fwpuclnt
+  preamble: DWORD WINAPI
+  args:
+  - PCWSTR
+  - FWP_BYTE_BLOB**
+
+FwpmFreeMemory0:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fwpmu/nf-fwpmu-fwpmfreememory0
+  library: Fwpuclnt
+  preamble: void WINAPI
+  args:
+  - void**
+
+OpenProcessToken:
+  # https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocesstoken
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - HANDLE
+  - DWORD
+  - PHANDLE
+
+LookupPrivilegeValueW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-lookupprivilegevaluew
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - LPCWSTR
+  - LPCWSTR
+  - PLUID
+
+AdjustTokenPrivileges:
+  # https://learn.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-adjusttokenprivileges
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - HANDLE
+  - WINBOOL
+  - PTOKEN_PRIVILEGES
+  - DWORD
+  - PTOKEN_PRIVILEGES
+  - PDWORD
+
+CreateDirectoryW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createdirectoryw
+  library: Kernel32
+  preamble: DECLSPEC_IMPORT WINBOOL WINAPI
+  args:
+  - LPCWSTR
+  - LPSECURITY_ATTRIBUTES
+
+RegSaveKeyExW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regsavekeyexw
+  library: Advapi32
+  preamble: WINADVAPI LONG WINAPI
+  args:
+  - HKEY
+  - LPCWSTR
+  - LPSECURITY_ATTRIBUTES
+  - DWORD
+
+OpenSCManagerW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winsvc/nf-winsvc-openscmanagerw
+  library: Advapi32
+  preamble: WINADVAPI SC_HANDLE WINAPI
+  args:
+  - LPCWSTR
+  - LPCWSTR
+  - DWORD
+
+CreateServiceW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winsvc/nf-winsvc-createservicew
+  library: Advapi32
+  preamble: WINADVAPI SC_HANDLE WINAPI
+  args:
+  - SC_HANDLE
+  - LPCWSTR
+  - LPCWSTR
+  - DWORD
+  - DWORD
+  - DWORD
+  - DWORD
+  - LPCWSTR
+  - LPCWSTR
+  - LPDWORD
+  - LPCWSTR
+  - LPCWSTR
+  - LPCWSTR
+
+StartServiceW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winsvc/nf-winsvc-startservicew
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - SC_HANDLE
+  - DWORD
+  - LPCWSTR*
+
+CloseServiceHandle:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winsvc/nf-winsvc-closeservicehandle
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - SC_HANDLE
+
+OpenEventLogW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-openeventlogw
+  library: Advapi32
+  preamble: WINADVAPI HANDLE WINAPI
+  args:
+  - LPCWSTR
+  - LPCWSTR
+
+ClearEventLogW:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-cleareventlogw
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - HANDLE
+  - LPCWSTR
+
+CloseEventLog:
+  # https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-closeeventlog
+  library: Advapi32
+  preamble: WINADVAPI WINBOOL WINAPI
+  args:
+  - HANDLE

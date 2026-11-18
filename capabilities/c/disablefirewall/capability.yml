@@ -1,0 +1,9 @@
+name: Disable Firewall
+description: Disables all Windows Firewall profiles (Domain, Private, Public) via COM INetFwPolicy2 (T1562.004). Requires admin.
+preimports:
+- |
+  #define INITGUID
+imports:
+- windows.h
+- netfw.h
+inputs: {}

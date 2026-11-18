@@ -1,0 +1,11 @@
+outfile: ../output/edrtamper.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - edrtamper:
+      target_exe: "C:\\\\Windows\\\\System32\\\\notepad.exe"
+      filter_name: "AllcapsTest Block"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

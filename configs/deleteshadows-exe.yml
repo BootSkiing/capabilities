@@ -1,0 +1,10 @@
+outfile: ../output/deleteshadows.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - deleteshadows:
+      dummy: "x"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

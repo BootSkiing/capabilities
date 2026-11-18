@@ -1,0 +1,11 @@
+outfile: ../output/loaddriver.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - loaddriver:
+      service_name: "AllcapsTestDrv"
+      driver_path: "C:\\\\AllcapsTest\\\\driver.sys"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

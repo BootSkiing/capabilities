@@ -1,0 +1,16 @@
+name: EDR Tamper
+description: Blocks EDR network communication using WFP to add a firewall block filter targeting an application path (T1562.001). Requires admin.
+preimports:
+- |
+  #define INITGUID
+  #include <guiddef.h>
+  DEFINE_GUID(FWPM_LAYER_ALE_AUTH_CONNECT_V4,
+      0xc38d57d1,0x05a7,0x4c33,0x90,0x4f,0x7f,0xbc,0xee,0xe6,0x0e,0x82);
+  DEFINE_GUID(FWPM_CONDITION_ALE_APP_ID,
+      0xd78e1e87,0x8644,0x4ea5,0x94,0x37,0xd8,0x09,0xec,0xef,0xc9,0x71);
+imports:
+- windows.h
+- fwpmu.h
+inputs:
+  target_exe: "Full path to the executable to block network access for"
+  filter_name: "Display name for the WFP filter"

@@ -1,0 +1,10 @@
+outfile: ../output/cleareventlog.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - cleareventlog:
+      log_name: "Application"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

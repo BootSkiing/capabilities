@@ -1,0 +1,5 @@
+name: Hack The Planet
+description: Displays a message box with "Hack the Planet!"
+imports:
+- windows.h
+inputs: {}

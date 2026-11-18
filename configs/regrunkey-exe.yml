@@ -1,0 +1,11 @@
+outfile: ../output/regrunkey.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - regrunkey:
+      key_name: "AllcapsTestPersist"
+      command: "C:\\Windows\\System32\\calc.exe"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

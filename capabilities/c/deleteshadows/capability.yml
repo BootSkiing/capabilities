@@ -1,0 +1,10 @@
+name: Delete Shadow Copies
+description: Deletes all Volume Shadow Copies via WMI Win32_ShadowCopy (T1490). Requires admin.
+preimports:
+- |
+  #define INITGUID
+  #define COBJMACROS
+imports:
+- windows.h
+- wbemcli.h
+inputs: {}

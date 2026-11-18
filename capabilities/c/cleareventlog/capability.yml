@@ -1,0 +1,6 @@
+name: Clear Event Log
+description: Clears a specified Windows event log channel via OpenEventLogW + ClearEventLogW (T1070.001). Requires admin.
+imports:
+- windows.h
+inputs:
+  log_name: "Name of the event log to clear (e.g. Application, Security, System)"

@@ -1,0 +1,7 @@
+name: Dump SAM
+description: Saves SAM and SYSTEM registry hives to disk for offline credential extraction (T1003.002). Enables SeBackupPrivilege before saving. Requires admin.
+imports:
+- windows.h
+inputs:
+  sam_output: "Output path for SAM hive"
+  system_output: "Output path for SYSTEM hive"

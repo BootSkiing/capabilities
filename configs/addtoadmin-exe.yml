@@ -1,0 +1,10 @@
+outfile: ../output/addtoadmin.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - addtoadmin:
+      username: "allcapstest"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

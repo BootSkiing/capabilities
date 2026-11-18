@@ -1,0 +1,7 @@
+name: Add User to Local Admin Group
+description: Adds an existing user to the local Administrators group via NetLocalGroupAddMembers (T1098). Requires admin.
+imports:
+- windows.h
+- lm.h
+inputs:
+  username: "Username to add to the Administrators group"

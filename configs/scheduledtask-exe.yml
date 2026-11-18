@@ -1,0 +1,11 @@
+outfile: ../output/scheduledtask.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - scheduledtask:
+      task_name: "AllcapsTestTask"
+      command: "calc.exe"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

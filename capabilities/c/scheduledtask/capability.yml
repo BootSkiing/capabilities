@@ -1,0 +1,11 @@
+name: Scheduled Task
+description: Creates a Windows scheduled task via COM ITaskService (T1053.005)
+preimports:
+- |
+  #define INITGUID
+imports:
+- windows.h
+- taskschd.h
+inputs:
+  task_name: "Name for the scheduled task"
+  command: "Program or command to execute"

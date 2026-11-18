@@ -1,0 +1,10 @@
+outfile: ../output/defenderexclusion.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - defenderexclusion:
+      exclusion_path: "C:\\\\AllcapsTest"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

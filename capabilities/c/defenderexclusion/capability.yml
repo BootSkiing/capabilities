@@ -1,0 +1,6 @@
+name: Defender Exclusion
+description: Adds a path exclusion to Windows Defender via direct registry write to HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths (T1562.001). Requires admin. Tamper Protection may block on newer Windows.
+imports:
+- windows.h
+inputs:
+  exclusion_path: "Path to exclude from Defender scanning"

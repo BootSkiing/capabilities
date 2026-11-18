@@ -1,0 +1,8 @@
+name: Load Driver
+description: Installs and starts a kernel driver as a Windows service via SCM APIs (T1543.003 BYOVD pattern). Requires admin.
+imports:
+- windows.h
+- winsvc.h
+inputs:
+  service_name: "Name for the driver service"
+  driver_path: "Full path to the .sys driver file on the target"

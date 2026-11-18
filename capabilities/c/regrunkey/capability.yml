@@ -1,0 +1,7 @@
+name: Registry Run Key Persistence
+description: Adds a value to HKCU\Software\Microsoft\Windows\CurrentVersion\Run for persistence (T1547.001). Standard user.
+imports:
+- windows.h
+inputs:
+  key_name: "Registry value name"
+  command: "Command to execute on logon"

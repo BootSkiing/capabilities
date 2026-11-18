@@ -1,0 +1,10 @@
+outfile: ../output/kerberoast.exe
+capabilities:
+  directory: ../capabilities
+  desired:
+  - kerberoast:
+      domain: "corp.local"
+constraints:
+  language: c
+  format: exe
+  architecture: x64
