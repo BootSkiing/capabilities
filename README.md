@@ -11,7 +11,7 @@ A collection of slopped together capability and config files for use with [ALLCA
 - Add Defender Antivirus Exclusion (T1562.001a)
 - Load Abusable Kernel Driver (BYOVD) (T1543.003)
 - EDR Network Tampering (T1562.001b)
- - Note: Currently configured for `CSFalconService.exe`
+  - Note: Currently configured for `CSFalconService.exe`
 - Extract SAM and SYSTEM Registry Hives (T1003.002)
 - Delete Shadow Copies (T1490)
 - Kerberoasting (T1558.003)
